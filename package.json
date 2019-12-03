@@ -1,6 +1,6 @@
 {
   "name": "gridsome-source-gmaps-geocode",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Geocode data from your Gridsome sources using the Google Maps Geocoding API.",
   "main": "index.js",
   "author": "James Hall",
