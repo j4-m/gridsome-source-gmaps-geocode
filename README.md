@@ -1,7 +1,18 @@
 # gridsome-source-gmaps-geocode
 
-```js
+## Install
 
+`yarn add gridsome-source-gmaps-geocode `
+
+Or
+
+`npm install --save gridsome-source-gmaps-geocode`
+
+## Usage
+
+Configure the plugin in your `gridsome.config.js`
+
+```js
 module.exports = {
   ...
   plugins: [
@@ -21,5 +32,22 @@ module.exports = {
       }
     },
   ]
+}
+```
+
+You will then be able to use the geocode data via the `geocode` field on `Office` nodes:
+
+```graphql
+{
+  allOffice {
+    edges {
+      node {
+        geocode {
+          lat
+          lng
+        }
+      }
+    }
+  }
 }
 ```
