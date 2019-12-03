@@ -35,7 +35,7 @@ module.exports = {
 }
 ```
 
-You will then be able to use the geocode data via the `geocode` field on `Office` nodes:
+You will then be able to use access the gecode result for the value of the `address` field on each `Office` node via the `geocode` field on `Office` nodes:
 
 ```graphql
 {
