@@ -22,7 +22,10 @@ class GmapGeocodeSource {
   }
 
   async createNodes(actions) {
-    const geocodeCollection = actions.addCollection('GmapGeocode')
+    let geocodeCollection
+    if (!(geocodeCollection = actions.getCollection('GmapGeocode'))) {
+      geocodeCollection = actions.addCollection('GmapGeocode')
+    }
     const sourceCollection = actions.getCollection(this.options.sourceTypeName)
     const sourceNodes = sourceCollection.data()
     await Promise.all(sourceNodes.map(async sourceNode => {
