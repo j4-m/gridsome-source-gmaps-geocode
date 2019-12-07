@@ -5,7 +5,8 @@ class GmapGeocodeSource {
       sourceTypeName: undefined,
       sourceTypeField: undefined,
       index: ['index'],
-      typeName: 'GmapGeocode'
+      typeName: 'GmapGeocode',
+      geocodeField: 'geocode'
     }
   }
 
@@ -33,9 +34,10 @@ class GmapGeocodeSource {
         const response = await this.gmaps.geocode({address: sourceNode[this.options.sourceTypeField]}).asPromise()
         const results = response.json.results
         if (results.length > 0) {
-          const geo = results[0].geometry.location
-          const geoNode = geocodeCollection.addNode({lat: geo.lat, lng: geo.lng})
-          sourceNode.geocode = actions.store.createReference(geoNode)
+          const result = results[0]
+          const geo = result.geometry.location
+          const geoNode = geocodeCollection.addNode({id: result.place_id, lat: geo.lat, lng: geo.lng})
+          sourceNode[this.options.geocodeField] = actions.store.createReference(geoNode)
           sourceCollection.updateNode(sourceNode)
         }
       }
